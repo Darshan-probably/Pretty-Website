@@ -1,4 +1,4 @@
-name = "discord-music-bot"  # Name of your Worker
+name = "pretty-website"  # Name of your Worker
 main = "src/index.js"       # Entry point for your Worker script
 compatibility_date = "2023-10-01"  # Compatibility date for Cloudflare Workers
 
