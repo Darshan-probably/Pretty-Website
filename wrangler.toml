@@ -5,13 +5,7 @@ compatibility_date = "2023-10-01"  # Compatibility date for Cloudflare Workers
 # Configuration for serving static files
 [site]
 bucket = "./public"  # Directory containing your static files (HTML, CSS, JS)
-entry-point = "src"  # Entry point for your Worker script
 
 # Define triggers (optional)
 [triggers]
 crons = []  # Add cron jobs if needed
-
-# Define secrets (optional)
-# Use `wrangler secret put <NAME>` to add secrets
-[secrets]
-# Example: API_KEY = "your-api-key"
