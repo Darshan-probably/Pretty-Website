@@ -1,6 +1,5 @@
 name = "pretty-website"
 main = "src/index.js"  # Entry point for your Worker script
-compatibility_date = "2023-10-01"
 
 [site]
 bucket = "./public"  # Directory containing your static files (HTML, CSS, JS)
