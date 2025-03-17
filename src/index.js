@@ -2,22 +2,24 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    console.log(`Request received: ${request.method} ${url.pathname}`);
+
     // Serve static files (HTML, CSS, JS)
     if (url.pathname === "/" || url.pathname === "/index.html") {
-      return handleStaticFiles("public/index.html", env);
+      return handleStaticFiles("index.html", env);
     }
     if (url.pathname === "/styles/styles.css") {
-      return handleStaticFiles("public/styles/styles.css", env);
+      return handleStaticFiles("styles/styles.css", env);
     }
     if (url.pathname === "/script.js") {
-      return handleStaticFiles("public/script.js", env);
+      return handleStaticFiles("script.js", env);
     }
 
     // Handle WebSocket connections
     if (url.pathname === "/websocket") {
       const upgradeHeader = request.headers.get("Upgrade");
       if (upgradeHeader === "websocket") {
-        return handleWebSocket(request, env);
+        return handleWebSocket(request);
       }
       return new Response("Expected WebSocket upgrade", { status: 426 });
     }
@@ -28,14 +30,14 @@ export default {
 };
 
 // Handle WebSocket connections
-async function handleWebSocket(request, env) {
+async function handleWebSocket(request) {
   const webSocketPair = new WebSocketPair();
   const [client, server] = Object.values(webSocketPair);
 
   server.accept();
   server.addEventListener("message", (event) => {
     console.log("Received message:", event.data);
-    server.send(`Connected to WebSocket server at ${env.WEBSOCKET_URL}`);
+    server.send("Hello from Worker!");
   });
 
   return new Response(null, {
@@ -46,10 +48,16 @@ async function handleWebSocket(request, env) {
 
 // Serve static files
 async function handleStaticFiles(filePath, env) {
-  const file = await env.ASSETS.fetch(`https://example.com/${filePath}`);
-  return new Response(file.body, {
-    headers: { "Content-Type": getContentType(filePath) },
-  });
+  try {
+    // Use the ASSETS binding to fetch the file
+    const file = await env.ASSETS.fetch(`https://example.com/${filePath}`);
+    return new Response(file.body, {
+      headers: { "Content-Type": getContentType(filePath) },
+    });
+  } catch (error) {
+    console.error(`Failed to fetch ${filePath}:`, error);
+    return new Response("Internal Server Error", { status: 500 });
+  }
 }
 
 // Get content type based on file extension
