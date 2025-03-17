@@ -9,10 +9,6 @@ bucket = "./public"  # Directory containing your static files (HTML, CSS, JS)
 [vars]
 WEBSOCKET_URL = "wss://AcclaimedDeadSpof.darshanisadev.repl.co"
 
-# wrangler.toml (wrangler v3.88.0^)
 [observability.logs]
 enabled = true
-
-
-
 
