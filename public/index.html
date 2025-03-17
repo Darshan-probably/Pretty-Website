@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Music Bot</title>
+    <link rel="stylesheet" href="public\styles\styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Connection Status -->
+        <div id="connectionStatus">Connecting...</div>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Welcome to Discord Music Bot</h1>
+            <p>Your ultimate music companion for Discord servers.</p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <input type="text" id="searchQuery" placeholder="Search for a song...">
+            <button id="searchSubmitBtn">Search</button>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="controls">
+            <button id="playBtn" class="control-btn">Play</button>
+            <button id="stopBtn" class="control-btn">Stop</button>
+            <button id="loopBtn" class="control-btn">Loop</button>
+            <button id="queueBtn" class="control-btn">Queue</button>
+        </div>
+
+        <!-- Queue Section -->
+        <div class="queue-section">
+            <h2>Current Queue</h2>
+            <ul id="queueList">
+                <li>Song 1</li>
+                <!-- Additional songs will be dynamically added here -->
+            </ul>
+        </div>
+
+        <!-- Invite Section -->
+        <div class="invite-section">
+            <button id="inviteBtn">Invite Bot to Server</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2023 Discord Music Bot. All rights reserved.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

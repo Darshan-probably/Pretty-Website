@@ -1,0 +1,11 @@
+{
+    "name": "discord-music-bot",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "chmod +x pre-build.sh && ./pre-build.sh",
+      "deploy": "wrangler deploy"
+    },
+    "dependencies": {
+      "wrangler": "^4.0.0"
+    }
+  }
