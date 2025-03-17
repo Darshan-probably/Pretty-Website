@@ -1,4 +1,4 @@
-name = "pretty-website"
+name = "website"
 main = "src/index.js"
 compatibility_date = "2023-10-01"
 
